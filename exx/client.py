@@ -175,19 +175,19 @@ class Client(object):
 
         .. code-block:: python
 
-        {
-            "bts_btc":{
-                "vol":0.0,
-                "last":0,
-                "sell":0.0,
-                "buy":0.0,
-                "weekRiseRate":0.0,
-                "riseRate":0.0,
-                "high":0.0,
-                "low":0,
-                "monthRiseRate":0.0
-            },
-        }
+            {
+                "bts_btc":{
+                    "vol":0.0,
+                    "last":0,
+                    "sell":0.0,
+                    "buy":0.0,
+                    "weekRiseRate":0.0,
+                    "riseRate":0.0,
+                    "high":0.0,
+                    "low":0,
+                    "monthRiseRate":0.0
+                },
+            }
 
         :raises:  ExxResponseException, ExxAPIException
 
@@ -209,20 +209,20 @@ class Client(object):
 
         .. code-block:: python
 
-        {
-            "ticker": {
-                "vol": "1447.851",
-                "last": "30.487000000",
-                "sell": "30.499",
-                "buy": "30.487",
-                "weekRiseRate": -1.17,
-                "riseRate": 9.45,
-                "high": "30.812",
-                "low": "27.855",
-                "monthRiseRate": -0.99
-            },
-            "date": "1510383406453"
-        }
+            {
+                "ticker": {
+                    "vol": "1447.851",
+                    "last": "30.487000000",
+                    "sell": "30.499",
+                    "buy": "30.487",
+                    "weekRiseRate": -1.17,
+                    "riseRate": 9.45,
+                    "high": "30.812",
+                    "low": "27.855",
+                    "monthRiseRate": -0.99
+                },
+                "date": "1510383406453"
+            }
 
         :raises:  ExxResponseException, ExxAPIException
 
@@ -250,21 +250,21 @@ class Client(object):
 
         .. code-block:: python
 
-        {
-            "asks": [
-                [
-                    "32.831",   # price
-                    "0.083"     # quantity
-                ]...
-            ],
-            "bids": [
-                [
-                    "30.434",   # price
-                    "10.766"    # quantity
-                ]...
-            ],
-            "timestamp" : Timestamp
-        }
+            {
+                "asks": [
+                    [
+                        "32.831",   # price
+                        "0.083"     # quantity
+                    ]...
+                ],
+                "bids": [
+                    [
+                        "30.434",   # price
+                        "10.766"    # quantity
+                    ]...
+                ],
+                "timestamp" : Timestamp
+            }
 
         :raises:  ExxResponseException, ExxAPIException
 
