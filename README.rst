@@ -1,5 +1,5 @@
 ============================
-Welcome to python-exx v0.0.1
+Welcome to python-exx v0.0.2
 ============================
 
 .. image:: https://img.shields.io/pypi/v/python-exx.svg

@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='python-exx',
-    version='0.0.1',
+    version='0.0.2',
     packages=['exx'],
     description='EXX REST API python implementation',
     url='https://github.com/sammchardy/python-exx',
