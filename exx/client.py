@@ -474,7 +474,13 @@ class Client(object):
         if order_type:
             data['type'] = order_type
 
-        return self._get('getOpenOrders', True, data=data)
+        try:
+            return self._get('getOpenOrders', True, data=data)
+        except ExxAPIException as e:
+            if e.code == 308:
+                return []
+            else:
+                raise e
 
     def get_balance(self):
         """Get your balance
