@@ -20,7 +20,7 @@ class ExxAPIException(Exception):
             if 'error' in json_res:
                 self.message = json_res['error']
             if 'code' in json_res:
-                self.code = ' {}'.format(json_res['code'])
+                self.code = json_res['code']
                 self.message = json_res['message']
 
         self.status_code = response.status_code
@@ -28,7 +28,10 @@ class ExxAPIException(Exception):
         self.request = getattr(response, 'request', None)
 
     def __str__(self):
-        return 'ExxAPIException{}: {}'.format(self.code, self.message)
+        code_str = ''
+        if self.code:
+            code_str = ' {}'.format(self.code)
+        return 'ExxAPIException{}: {}'.format(code_str, self.message)
 
 
 class ExxRequestException(Exception):

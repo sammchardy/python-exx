@@ -41,7 +41,8 @@ class Client(object):
     def _init_session(self):
 
         session = requests.session()
-        headers = {'Accept': 'application/json'}
+        headers = {'Accept': 'application/json',
+                   'User-Agent': 'python-exx'}
         session.headers.update(headers)
         return session
 
@@ -101,7 +102,7 @@ class Client(object):
 
         uri += '?{}'.format(query_string)
 
-        response = getattr(self.session, method)(uri, **kwargs)
+        response = getattr(self.session, method)(uri, timeout=10, **kwargs)
         return self._handle_response(response)
 
     def _handle_response(self, response):
@@ -424,7 +425,7 @@ class Client(object):
 
         return self._get('getOrder', True, data=data)
 
-    def get_open_orders(self, symbol, order_type=None, page=0):
+    def get_open_orders(self, symbol, order_type=None, page=1):
         """Get a list of open buy or sell orders, 10 at a time
 
         :param symbol: e.g eth_hsr
@@ -474,7 +475,13 @@ class Client(object):
         if order_type:
             data['type'] = order_type
 
-        return self._get('getOpenOrders', True, data=data)
+        try:
+            return self._get('getOpenOrders', True, data=data)
+        except ExxAPIException as e:
+            if e.code == 308:
+                return []
+            else:
+                raise e
 
     def get_balance(self):
         """Get your balance
