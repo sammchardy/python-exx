@@ -41,7 +41,8 @@ class Client(object):
     def _init_session(self):
 
         session = requests.session()
-        headers = {'Accept': 'application/json'}
+        headers = {'Accept': 'application/json',
+                   'User-Agent': 'python-exx'}
         session.headers.update(headers)
         return session
 
