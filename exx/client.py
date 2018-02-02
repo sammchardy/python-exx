@@ -101,7 +101,7 @@ class Client(object):
 
         uri += '?{}'.format(query_string)
 
-        response = getattr(self.session, method)(uri, **kwargs)
+        response = getattr(self.session, method)(uri, timeout=10, **kwargs)
         return self._handle_response(response)
 
     def _handle_response(self, response):
