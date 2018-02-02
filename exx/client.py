@@ -424,7 +424,7 @@ class Client(object):
 
         return self._get('getOrder', True, data=data)
 
-    def get_open_orders(self, symbol, order_type=None, page=0):
+    def get_open_orders(self, symbol, order_type=None, page=1):
         """Get a list of open buy or sell orders, 10 at a time
 
         :param symbol: e.g eth_hsr
@@ -474,7 +474,13 @@ class Client(object):
         if order_type:
             data['type'] = order_type
 
-        return self._get('getOpenOrders', True, data=data)
+        try:
+            return self._get('getOpenOrders', True, data=data)
+        except ExxAPIException as e:
+            if e.code == 308:
+                return []
+            else:
+                raise e
 
     def get_balance(self):
         """Get your balance
